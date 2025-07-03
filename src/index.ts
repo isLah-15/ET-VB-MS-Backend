@@ -1,6 +1,14 @@
-export const sum = (a: number, b: number): number => {
-    return a + b;
-}
+import express from 'express';
 
-console.log(sum(2,4))
+const app = express();
 
+
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
+
+app.listen(8081, () => {
+  console.log('Server is running on http://localhost:8081');
+});
+
+export default app;

@@ -7,8 +7,8 @@
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
     "start": "npm run build && node dist/index.js",
-    "generate":"drizzle-kit generate",
-    "migrate":"tsx src/drizzle/migrate.ts",
+    "generate": "drizzle-kit generate",
+    "migrate": "tsx src/drizzle/migrate.ts",
     "seed": "tsx src/Drizzle/seed.ts"
   },
   "keywords": [],
@@ -20,8 +20,12 @@
     "drizzle-kit": "^0.31.4"
   },
   "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^5.0.3",
+    "bcryptjs": "^3.0.2",
     "dotenv": "^17.0.1",
     "drizzle-orm": "^0.44.2",
+    "express": "^5.1.0",
     "pg": "^8.16.3",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3"
