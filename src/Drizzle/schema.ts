@@ -14,6 +14,7 @@ export const UserTable = pgTable('users', {
     password: varchar('password', { length: 255 }).notNull(),
     contactPhone: integer('contact_phone').notNull(),
     address: varchar('address', { length: 255 }).notNull(),
+    verificationCode: varchar("verification_code"),
     role: text('role', { enum: ['admin', 'user'] }).notNull(),
     createdAt: date('created_at').defaultNow().notNull(),
     updatedAt: date('updated_at').defaultNow().notNull(),

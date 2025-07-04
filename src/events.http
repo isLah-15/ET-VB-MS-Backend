@@ -1,0 +1,6 @@
+#Test the base URL
+GET http://localhost:8081
+
+### Create a user
+POST http://localhost:8081/auth/register
+

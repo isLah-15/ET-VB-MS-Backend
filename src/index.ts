@@ -1,7 +1,13 @@
 import express from 'express';
+import user from './Auth/auth.router';
 
 const app = express();
 
+// middleware
+app.use(express.json())
+
+// routes
+user(app)
 
 app.get('/', (req, res) => {
   res.send('Hello, World!');
