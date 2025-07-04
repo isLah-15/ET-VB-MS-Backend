@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createBookingService, deleteBookingService, getAllBookingService, getBookingByIdService, updateBookingService } from "./booking.service";
+import { createBookingService, deleteBookingService, getAllBookingService, getBookingByIdService, updateBookingByIdService,  } from "./booking.service";
 
 
 // Create a new booking
@@ -79,7 +79,7 @@ export const updateBookingbyIdController = async (req: Request, res: Response) =
     }
 
     // Update the booking
-    const updatedBooking = await updateBookingService(bookingId, booking);
+    const updatedBooking = await updateBookingByIdService(bookingId, booking);
     if (updatedBooking) {
       return res.status(200).json({ message: "Booking updated successfully", data: updatedBooking });
     } else {

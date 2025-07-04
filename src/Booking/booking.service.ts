@@ -45,8 +45,8 @@ export const getBookingByIdService = async (bookingId: number) => {
     return booking;
 };
 
-//update booking service
-export const updateBookingService = async (bookingId: number, booking: TIBooking) => {
+//update booking by Id service
+export const updateBookingByIdService = async (bookingId: number, booking: TIBooking) => {
     await db.update(BookingTable)
         .set(booking)
         .where(eq(BookingTable.bookingId, bookingId)).returning();
