@@ -53,3 +53,13 @@ export const updatePaymentByIdService = async (paymentId: number, payment: TIPay
         .where(eq(PaymentTable.paymentId, paymentId)).returning();
     return "Payment updated successfully";
 };
+
+//delete payment service
+export const deletePaymentService = async (paymentId: number) => {
+    const deleted = await db.delete(PaymentTable)
+        .where(eq(PaymentTable.paymentId, paymentId)).returning();
+    if (deleted.length === 0) {
+        return "Payment not found";
+    }
+    return "Payment deleted successfully";
+};

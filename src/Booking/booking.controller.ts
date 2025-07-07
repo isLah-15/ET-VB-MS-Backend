@@ -12,7 +12,7 @@ export const createBookingController = async (req: Request, res: Response) => {
 
     console.log(newBooking)
     if (newBooking) {
-      return res.status(201).json({ message: "Booking created successfully", data: newBooking });
+      return res.status(201).json({ message: "Booking created successfully", newBooking });
     } else {
       return res.status(400).json({ message: "Failed to create booking" });
     }
@@ -31,7 +31,7 @@ export const getAllBookingsController = async ( req: Request, res: Response) => 
       return res.status(404).json({ message: "No bookings found" });
     }
 
-    return res.status(200).json({ message: "Bookings retrieved successfully", data: bookings });
+    return res.status(200).json({ message: "Bookings retrieved successfully", bookings });
   } catch (error: any) {
     return res.status(500).json({ message: "Internal server error", error: error.message });
   }
@@ -41,12 +41,10 @@ export const getAllBookingsController = async ( req: Request, res: Response) => 
 export const getAllBookingsByIdController = async (req: Request, res: Response) => {
   try {
     const bookingId = parseInt(req.params.id);
-
     console.log("uuuuuuuuuuuuu ", req.params.id)
     if (isNaN(bookingId)) {
       return res.status(400).json({ message: "Invalid booking ID" });
     }
-
     const booking = await getBookingByIdService(bookingId);
 
     console.log("23456787654 ", booking)
@@ -54,10 +52,9 @@ export const getAllBookingsByIdController = async (req: Request, res: Response) 
       return res.status(404).json({ message: "Booking not found" });
     }
 
-    return res.status(200).json({data: booking});
-
+    return res.status(200).json({ booking });
   } catch (error: any) {
-    return res.status(500).json({error: error.message});
+    return res.status(500).json({ error: error.message });
   }
 };
 
@@ -81,7 +78,7 @@ export const updateBookingbyIdController = async (req: Request, res: Response) =
     // Update the booking
     const updatedBooking = await updateBookingByIdService(bookingId, booking);
     if (updatedBooking) {
-      return res.status(200).json({ message: "Booking updated successfully", data: updatedBooking });
+      return res.status(200).json({ message: "Booking updated successfully", updatedBooking });
     } else {
       return res.status(400).json({ message: "Failed to update booking" });
     }
@@ -110,8 +107,8 @@ export const deleteBookingbyIdController = async (req: Request, res: Response) =
             return;
         }
         return res.status(200).json({ message: "Booking deleted successfully" });
-        
   } catch (error: any) {
+    console.error("DELETE BOOKING ERROR:", error);
     return res.status(500).json({ message: "Internal server error", error: error.message });
   }
 };
