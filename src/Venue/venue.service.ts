@@ -1,10 +1,10 @@
 import db from "../Drizzle/db";
-import { VenueTable } from "../Drizzle/schema";
+import { TIVenue, VenueTable } from "../Drizzle/schema";
 import { eq } from "drizzle-orm";
 
 
 // Create a new venue
-export const createVenueService = async (venue: any) => {
+export const createVenueService = async (venue: TIVenue) => {
     const inserted = await db.insert(VenueTable).values(venue).returning();
     if (inserted) {
         return inserted;

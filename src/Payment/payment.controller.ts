@@ -11,7 +11,7 @@ export const createPaymentController = async (req: Request, res: Response) => {
 
         console.log(newPayment);
         if (newPayment) {
-            return res.status(201).json({ message: "Payment created successfully", data: newPayment });
+            return res.status(201).json({ message: "Payment created successfully", newPayment });
         } else {
             return res.status(400).json({ message: "Failed to create payment" });
         }
@@ -31,7 +31,7 @@ export const getAllPaymentsController = async (req: Request, res: Response) => {
         if (payments.length === 0) {
             return res.status(404).json({ message: "No payments found" });
         }
-        return res.status(200).json({ message: "Payments retrieved successfully", data: payments });
+        return res.status(200).json({ message: "Payments retrieved successfully", payments });
     } catch (error: any) {
         console.error("GET ALL PAYMENTS ERROR:", error);
         return res.status(500).json({ message: "Internal server error", error: error.message });
@@ -53,7 +53,7 @@ export const getPaymentByIdController = async (req: Request, res: Response) => {
         if (!payment) {
             return res.status(404).json({ message: "Payment not found" });
         }
-        return res.status(200).json({ message: "Payment retrieved successfully", data: payment });
+        return res.status(200).json({ message: "Payment retrieved successfully", payment });
     } catch (error: any) {
         console.error("GET PAYMENT BY ID ERROR:", error);
         return res.status(500).json({ message: "Internal server error", error: error.message });
@@ -80,7 +80,7 @@ export const updatePaymentByIdController = async (req: Request, res: Response) =
         // Update the payment
         const updatedPayment = await updatePaymentByIdService(paymentId, payment);
         if (updatedPayment) {
-            return res.status(200).json({ message: "Payment updated successfully", data: updatedPayment });
+            return res.status(200).json({ message: "Payment updated successfully", updatedPayment });
         } else {
             return res.status(400).json({ message: "Failed to update payment" });
         }
@@ -106,7 +106,7 @@ export const deletePaymentController = async (req: Request, res: Response) => {
 
         const deletedPayment = await deletePaymentService(paymentId);
         if (deletedPayment) {
-            return res.status(200).json({ message: "Payment deleted successfully", data: deletedPayment });
+            return res.status(200).json({ message: "Payment deleted successfully", deletedPayment });
         } else {
             return res.status(400).json({ message: "Failed to delete payment" });
         }
