@@ -64,21 +64,18 @@ export const verifyUserController = async (req: Request, res: Response) => {
                     `<div>
                     <h2>Hello ${user.lastName},</h2>
                     <p>Your account has been <strong>successfully verified</strong>!</p>
-                     <p>You can now log in and enjoy our services.</p>
-                     </div>`
-                )
-
+                    <p>You can now log in and enjoy our services.</p>
+                    </div>`
+                );
             } catch (error: any) {
                 console.error("Failed to send verification success email:", error);
-
             }
             return res.status(200).json({ message: "User verified successfully" });
         } else {
             return res.status(400).json({ message: "Invalid verification code" });
         }
     } catch (error: any) {
-        return res.status(500).json({ error: error.message });
-
+      return res.status(500).json({ error: error.message });
     }
 }
 
@@ -144,7 +141,7 @@ export const getAllUsersController = async (req: Request, res: Response) => {
         if (users.length === 0) {
             return res.status(404).json({ message: "No users found" });
         }
-        return res.status(200).json({ message: "Users retrieved successfully", data: users });
+        return res.status(200).json({ message: "Users retrieved successfully", users });
     } catch (error: any) {
         return res.status(500).json({ message: "Internal server error", error: error.message });
     }
@@ -158,7 +155,7 @@ export const getUserByIdController = async (req: Request, res: Response) => {
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
-        return res.status(200).json({ message: "User retrieved successfully", data: user });
+        return res.status(200).json({ message: "User retrieved successfully", user });
     } catch (error: any) {
         return res.status(500).json({ message: "Internal server error", error: error.message });
     }
@@ -180,7 +177,7 @@ export const updateUserController = async (req: Request, res: Response) => {
         
         // Update the user role
         const updatedUser = await updateUserService( userId, body );
-        return res.status(200).json({ message: "User updated successfully", data: updatedUser });
+        return res.status(200).json({ message: "User updated successfully", updatedUser });
     } catch (error: any) {
         return res.status(500).json({ message: "Internal server error", error: error.message });
     }
