@@ -19,12 +19,9 @@ export const getAllBookingService = async () => {
             event: true
         }
     });
-
     if (bookings.length === 0) {
         return "No bookings found";
     }
-
-
     return bookings;
 };
 
