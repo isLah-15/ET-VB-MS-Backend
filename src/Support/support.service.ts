@@ -4,7 +4,7 @@ import { CustomerSupportTable, TICustomerSupport } from "../Drizzle/schema";
 
 //create customer support service
 export const createCustomerSupportService = async (ticket: any) => {
-    const inserted = await db.insert(CustomerSupportTable).values(ticket);
+    const inserted = await db.insert(CustomerSupportTable).values(ticket).returning();
     if (inserted) {
         return inserted;
     }

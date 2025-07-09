@@ -1,7 +1,7 @@
 
 import { sql } from "drizzle-orm";
 import db from "../Drizzle/db";
-import { TIUser, UserRelationships, UserTable } from "../Drizzle/schema";
+import { TIUser, UserTable } from "../Drizzle/schema";
 
 // create a new user
 export const createUserService = async (user: TIUser) => {
@@ -24,7 +24,7 @@ export const verifyUserService = async (email: string) => {
 };
 
 //login a user
-export const loginUserService = async (user: TIUser) => {
+export const loginUserService = async (user: Partial<TIUser>) => {
     // email and password are used to find the user
     const {email} = user;
 

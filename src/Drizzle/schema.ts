@@ -140,6 +140,8 @@ export const CustomerSupportRelationships = relations(CustomerSupportTable, ({ o
     references: [UserTable.userId],
   }),
 }));
+
+
 //EventTable Relationships - 1 Event belongs to 1 Venue and can have many Bookings
 export const EventRelationships = relations(EventTable, ({ one, many }) => ({
   venue: one(VenueTable, {
