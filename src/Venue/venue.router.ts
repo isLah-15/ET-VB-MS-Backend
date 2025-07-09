@@ -36,7 +36,7 @@ const venue = (app: Express) => {
     );
 
     // Update venue by ID
-    app.route('/venue/:id').put(
+    app.route('/venue/:venueId').put(
         async (req, res, next) => {
             try {
                 await updateVenueByIdController(req, res);
@@ -47,7 +47,7 @@ const venue = (app: Express) => {
     );
 
     // Delete venue by ID
-    app.route('/venue/:id').delete(
+    app.route('/venue/:venueId').delete(
         async (req, res, next) => {
             try {
                 await deleteVenuebyIdController(req, res);

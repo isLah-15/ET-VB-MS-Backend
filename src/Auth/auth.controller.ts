@@ -1,6 +1,6 @@
 // api
 import { Request, Response } from "express";
-import { createUserService, deleteUserService, getAllUsersService, getUserByEmailService, getUserByIdService, loginUserService, updateUserService, verifyUserService } from "./auth.service";
+import { createUserService, deleteUserbyIdService, getAllUsersService, getUserByEmailService, getUserByIdService, loginUserService, updateUserbyIdService, verifyUserService } from "./auth.service";
 import bcrypt from "bcryptjs"
 import { sendEmail } from "../Utils/mailer";
 import "dotenv/config"
@@ -41,7 +41,8 @@ export const createUserController = async (req: Request, res: Response) => {
     } catch (error: any) {
         return res.status(500).json({ error: error.message })
     }
-}
+};
+
 
 //verify a user controller
 export const verifyUserController = async (req: Request, res: Response) => {
@@ -77,7 +78,8 @@ export const verifyUserController = async (req: Request, res: Response) => {
     } catch (error: any) {
       return res.status(500).json({ error: error.message });
     }
-}
+};
+
 
 //login user controller
 export const loginUserController = async (req: Request, res: Response) => {
@@ -132,9 +134,10 @@ export const loginUserController = async (req: Request, res: Response) => {
         return res.status(500).json({ error: error.message });
 
     }
-}
+};
 
-/// logic to get all users
+
+// get all users
 export const getAllUsersController = async (req: Request, res: Response) => {
     try {
         const users = await getAllUsersService();
@@ -147,11 +150,12 @@ export const getAllUsersController = async (req: Request, res: Response) => {
     }
 };
 
-// logic to get a user by id
+
+// get a user by id
 export const getUserByIdController = async (req: Request, res: Response) => {
     try {
         const { userId } = req.params;
-        const user = await getUserByIdService(userId);
+        const user = await getUserByIdService(Number(userId));
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
@@ -161,37 +165,36 @@ export const getUserByIdController = async (req: Request, res: Response) => {
     }
 };
 
-//logic to update a user by id either user or admin
-export const updateUserController = async (req: Request, res: Response) => {
+
+// update a user by id either user or admin
+export const updateUserbyIdController = async (req: Request, res: Response) => {
     try {
         const { userId } = req.body;
         const { body } = req.body;
 
-        console.log(req.body)
-
-        
         const user = await getUserByIdService(userId);
         if (!user) { 
             return res.status(404).json({ message: "User not found" });
         }
         
         // Update the user role
-        const updatedUser = await updateUserService( userId, body );
+        const updatedUser = await updateUserbyIdService( userId, req.body );
         return res.status(200).json({ message: "User updated successfully", updatedUser });
     } catch (error: any) {
         return res.status(500).json({ message: "Internal server error", error: error.message });
     }
 };
 
-// logic to delete a user by id
-export const deleteUserController = async (req: Request, res: Response) => {
+
+// delete a user by id
+export const deleteUserbyIdController = async (req: Request, res: Response) => {
     try {
         const { userId } = req.params;
-        const user = await getUserByIdService(userId);
+        const user = await getUserByIdService(Number( userId));
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
-        await deleteUserService(userId);
+        await deleteUserbyIdService(userId);
         return res.status(200).json({ message: "User deleted successfully" });
     } catch (error: any) {
         return res.status(500).json({ message: "Internal server error", error: error.message });

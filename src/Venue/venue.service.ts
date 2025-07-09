@@ -33,7 +33,7 @@ export const getVenueByIdService = async (venueId: number) => {
 };
 
 // Update venue by ID
-export const updateVenueByIdService = async (venueId: number, venue: any) => {
+export const updateVenueByIdService = async (venueId: number, venue: TIVenue) => {
     await db.update(VenueTable)
         .set(venue)
         .where(eq(VenueTable.venueId, venueId)).returning();
@@ -41,7 +41,7 @@ export const updateVenueByIdService = async (venueId: number, venue: any) => {
 };
 
 // Delete venue by ID
-export const deleteVenueService = async (venueId: number) => {
+export const deleteVenuebyIdService = async (venueId: number) => {
     const deleted = await db.delete(VenueTable)
         .where(eq(VenueTable.venueId, venueId)).returning();
     if (deleted.length === 0) {

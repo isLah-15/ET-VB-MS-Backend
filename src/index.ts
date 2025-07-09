@@ -1,5 +1,6 @@
 import express from 'express';
 import user from './Auth/auth.router';
+import venue from './Venue/venue.router';
 
 const app = express();
 
@@ -7,7 +8,8 @@ const app = express();
 app.use(express.json())
 
 // routes
-user(app)
+user(app);
+venue(app)
 
 app.get('/', (req, res) => {
   res.send('Hello, World!');

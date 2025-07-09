@@ -1,6 +1,6 @@
 // routing
 import { Express } from "express";
-import { createUserController, deleteUserController, getAllUsersController, getUserByIdController, loginUserController, updateUserController, verifyUserController } from "./auth.controller";
+import { createUserController, deleteUserbyIdController, getAllUsersController, getUserByIdController, loginUserController, updateUserbyIdController, verifyUserController } from "./auth.controller";
 
 const user = (app: Express) => {
     // route
@@ -49,7 +49,7 @@ const user = (app: Express) => {
     )
 
     // get user by id route
-    app.route('/user/:id').get(
+    app.route('/user/:userId').get(
         async (req, res, next) => {
             try {
                 await getUserByIdController(req, res)
@@ -60,20 +60,20 @@ const user = (app: Express) => {
     )
 
     // update user route
-    app.route('/user/:id').put(
+    app.route('/user/:userId').put(
         async (req, res, next) => {
             try {
-                await updateUserController(req, res)
+                await updateUserbyIdController(req, res)
             } catch (error) {
                 next(error)
             }
         }
     )
     // delete user route
-    app.route('/users/:id').delete(
+    app.route('/user/:userId').delete(
         async (req, res, next) => {
             try {
-                await deleteUserController(req, res)
+                await deleteUserbyIdController(req, res)
             } catch (error) {
                 next(error)
             }

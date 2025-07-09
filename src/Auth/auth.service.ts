@@ -59,7 +59,7 @@ export const getAllUsersService = async () => {
 };  
 
 // get user by Id
-export const getUserByIdService = async (userId: string) => {
+export const getUserByIdService = async (userId: number) => {
     const user = await db.query.UserTable.findFirst({
         where: sql`${UserTable.userId} = ${userId}`,
     });
@@ -67,7 +67,7 @@ export const getUserByIdService = async (userId: string) => {
 };
 
 // update a user by Id by role either user or admin
-export const updateUserService = async (userId: number, user: TIUser) => {
+export const updateUserbyIdService = async (userId: number, user: TIUser) => {
     console.log("Updating user with ID:", userId);
     const updatedUser = await db.update(UserTable)
         .set(user)
@@ -79,7 +79,7 @@ export const updateUserService = async (userId: number, user: TIUser) => {
 };
 
 // delete a user by Id
-export const deleteUserService = async (userId: string) => {
+export const deleteUserbyIdService = async (userId: string) => {
     const deletedUser = await db.delete(UserTable)
         .where(sql`${UserTable.userId} = ${userId}`);
     return deletedUser;

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createVenueService, deleteVenueService, getAllVenuesService, getVenueByIdService } from "./venue.service";
+import { createVenueService, deleteVenuebyIdService, getAllVenuesService, getVenueByIdService, updateVenueByIdService } from "./venue.service";
 
 // Create a new venue
 export const createVenueController = async (req: Request, res: Response) => {
@@ -56,7 +56,7 @@ export const getVenueByIdController = async (req: Request, res: Response) => {
 // Update venue by ID
 export const updateVenueByIdController = async (req: Request, res: Response) => {
   try {
-    const venueId = parseInt(req.params.id);
+    const venueId = parseInt(req.params.venueId);
     if (isNaN(venueId)) {
       return res.status(400).json({ message: "Invalid venue ID" });
     }
@@ -69,7 +69,7 @@ export const updateVenueByIdController = async (req: Request, res: Response) => 
       return res.status(404).json({ message: "Venue not found" });
     }   
 
-    const updatedVenue = await createVenueService(venueData);
+    const updatedVenue = await updateVenueByIdService(venueId, venueData);
     if (updatedVenue) {
       return res.status(200).json({ message: "Venue updated successfully", updatedVenue });
     } else {
@@ -84,7 +84,7 @@ export const updateVenueByIdController = async (req: Request, res: Response) => 
 // Delete venue by ID
 export const deleteVenuebyIdController = async (req: Request, res: Response) => {
   try {
-    const venueId = parseInt(req.params.id);
+    const venueId = parseInt(req.params.venueId);
     if (isNaN(venueId)) {
       return res.status(400).json({ message: "Invalid venue ID" });
     }
@@ -94,7 +94,7 @@ export const deleteVenuebyIdController = async (req: Request, res: Response) => 
       return res.status(404).json({ message: "Venue not found" });
     }
 
-    const deleted = await deleteVenueService(venueId);
+    const deleted = await deleteVenuebyIdService(venueId);
     if (deleted === "Venue not found") {
       return res.status(404).json({ message: "Venue not found" });
     }

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createBookingService, deleteBookingService, getAllBookingService, getBookingByIdService, updateBookingByIdService,  } from "./booking.service";
+import { createBookingService, deleteBookingbyIdService, getAllBookingService, getBookingByIdService, updateBookingByIdService,  } from "./booking.service";
 
 
 // Create a new booking
@@ -101,12 +101,12 @@ export const deleteBookingbyIdController = async (req: Request, res: Response) =
       return res.status(404).json({ message: "Booking not found" });
     }
 
-    const deleted = await deleteBookingService(bookingId);
-     if (deleted == "Booking not found") {
-            res.status(404).json({message: "Booking not found"})
-            return;
-        }
-        return res.status(200).json({ message: "Booking deleted successfully" });
+    const deleted = await deleteBookingbyIdService(bookingId);
+    if (deleted == "Booking not found") {
+      return res.status(404).json({ message: "Booking not found" });
+      
+    }
+    return res.status(200).json({ message: "Booking deleted successfully" });
   } catch (error: any) {
     console.error("DELETE BOOKING ERROR:", error);
     return res.status(500).json({ message: "Internal server error", error: error.message });

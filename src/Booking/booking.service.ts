@@ -51,7 +51,7 @@ export const updateBookingByIdService = async (bookingId: number, booking: TIBoo
 };
 
 //delete booking service by Id
-export const deleteBookingService = async (bookingId: number) => {
+export const deleteBookingbyIdService = async (bookingId: number) => {
     const deleted = await db.delete(BookingTable)
         .where(eq(BookingTable.bookingId, bookingId)).returning();
         if(deleted.length === 0) {
