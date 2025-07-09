@@ -111,25 +111,42 @@ export const UserRelationships = relations(UserTable, ({ many }) => ({
 
 //BookingTable Relationships - 1 Booking belongs to 1 User and 1 Event
 export const BookingRelationships = relations(BookingTable, ({ one }) => ({
-    user: one(UserTable),
-    event: one(EventTable),
+  user: one(UserTable, {
+    fields: [BookingTable.userId],
+    references: [UserTable.userId],
+  }),
+  event: one(EventTable, {
+    fields: [BookingTable.eventId],
+    references: [EventTable.eventId],
+  }),
 }));
 
 //PaymentTable Relationships - 1 Payment belongs to 1 Booking and 1 User
 export const PaymentRelationships = relations(PaymentTable, ({ one }) => ({
-    booking: one(BookingTable),
-    user: one(UserTable),
+  booking: one(BookingTable, {
+    fields: [PaymentTable.bookingId],
+    references: [BookingTable.bookingId],
+  }),
+  user: one(UserTable, {
+    fields: [PaymentTable.userId],
+    references: [UserTable.userId],
+  }),
 }));
 
 //CustomerSupportTable Relationships - 1 Ticket belongs to 1 User
 export const CustomerSupportRelationships = relations(CustomerSupportTable, ({ one }) => ({
-    user: one(UserTable),
+  user: one(UserTable, {
+    fields: [CustomerSupportTable.userId],
+    references: [UserTable.userId],
+  }),
 }));
-
 //EventTable Relationships - 1 Event belongs to 1 Venue and can have many Bookings
 export const EventRelationships = relations(EventTable, ({ one, many }) => ({
-    venue: one(VenueTable),
-    bookings: many(BookingTable),
+  venue: one(VenueTable, {
+    fields: [EventTable.venueId],
+    references: [VenueTable.venueId],
+  }),
+  bookings: many(BookingTable),
 }));
 
 // types for the tables

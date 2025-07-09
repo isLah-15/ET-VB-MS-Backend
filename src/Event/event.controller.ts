@@ -38,7 +38,7 @@ export const getAllEventsController = async (req: Request, res: Response) => {
 // Get event by ID
 export const getEventByIdController = async (req: Request, res: Response) => {
     try {
-        const eventId = parseInt(req.params.id);
+        const eventId = parseInt(req.params.eventId);
         console.log("Event ID:", eventId);
         if (isNaN(eventId)) {
             return res.status(400).json({ message: "Invalid event ID" });
@@ -60,7 +60,7 @@ export const getEventByIdController = async (req: Request, res: Response) => {
 // Update event by ID
 export const updateEventByIdController = async (req: Request, res: Response) => {
     try {
-        const eventId = parseInt(req.params.id);
+        const eventId = parseInt(req.params.eventId);
         if (isNaN(eventId)) {
             return res.status(400).json({ message: "Invalid event ID" });
         }
@@ -91,7 +91,7 @@ export const updateEventByIdController = async (req: Request, res: Response) => 
 // Delete event by ID
 export const deleteEventController = async (req: Request, res: Response) => {
     try {
-        const eventId = parseInt(req.params.id);
+        const eventId = parseInt(req.params.eventId);
         if (isNaN(eventId)) {
             return res.status(400).json({ message: "Invalid event ID" });
         }

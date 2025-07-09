@@ -40,8 +40,8 @@ export const getAllBookingsController = async ( req: Request, res: Response) => 
 // Get booking by ID
 export const getAllBookingsByIdController = async (req: Request, res: Response) => {
   try {
-    const bookingId = parseInt(req.params.id);
-    console.log("uuuuuuuuuuuuu ", req.params.id)
+    const bookingId = parseInt(req.params.bookingId);
+    console.log("uuuuuuuuuuuuu ", req.params.bookingId)
     if (isNaN(bookingId)) {
       return res.status(400).json({ message: "Invalid booking ID" });
     }
@@ -61,7 +61,7 @@ export const getAllBookingsByIdController = async (req: Request, res: Response) 
 // Update booking by ID
 export const updateBookingbyIdController = async (req: Request, res: Response) => {
   try {
-    const bookingId = parseInt(req.params.id);
+    const bookingId = parseInt(req.params.bookingId);
     if (isNaN(bookingId)) {
       return res.status(400).json({ message: "Invalid booking ID" });
     }
@@ -91,7 +91,7 @@ export const updateBookingbyIdController = async (req: Request, res: Response) =
 // Delete booking by ID
 export const deleteBookingbyIdController = async (req: Request, res: Response) => {
   try {
-    const bookingId = parseInt(req.params.id);
+    const bookingId = parseInt(req.params.bookingId);
     if (isNaN(bookingId)) {
       return res.status(400).json({ message: "Invalid booking ID" });
     }

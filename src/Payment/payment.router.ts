@@ -25,7 +25,7 @@ const payment = (app: Express) => {
     );
 
     // Get payment by ID
-    app.route('/payment/:id').get(
+    app.route('/payment/:paymentId').get(
         async (req, res, next) => {
             try {
                 await getPaymentByIdController(req, res);
@@ -36,7 +36,7 @@ const payment = (app: Express) => {
     );
 
     // Update payment by ID
-    app.route('/payment/:id').put(
+    app.route('/payment/:paymentId').put(
         async (req, res, next) => {
             try {
                 await updatePaymentByIdController(req, res);
@@ -47,7 +47,7 @@ const payment = (app: Express) => {
     );
 
     // Delete payment by ID
-    app.route('/payment/:id').delete(
+    app.route('/payment/:paymentId').delete(
         async (req, res, next) => {
             try {
                 await deletePaymentController(req, res);

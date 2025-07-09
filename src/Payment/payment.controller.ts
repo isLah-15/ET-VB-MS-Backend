@@ -41,7 +41,7 @@ export const getAllPaymentsController = async (req: Request, res: Response) => {
 // Get payment by ID
 export const getPaymentByIdController = async (req: Request, res: Response) => {
     try {
-        const paymentId = parseInt(req.params.id);
+        const paymentId = parseInt(req.params.paymentId);
         console.log("Payment ID:", paymentId);
         if (isNaN(paymentId)) {
             return res.status(400).json({ message: "Invalid payment ID" });
@@ -63,7 +63,7 @@ export const getPaymentByIdController = async (req: Request, res: Response) => {
 // Update payment by ID
 export const updatePaymentByIdController = async (req: Request, res: Response) => {
     try {
-        const paymentId = parseInt(req.params.id);
+        const paymentId = parseInt(req.params.paymentId);
         if (isNaN(paymentId)) {
             return res.status(400).json({ message: "Invalid payment ID" });
         }
@@ -94,7 +94,7 @@ export const updatePaymentByIdController = async (req: Request, res: Response) =
 // Delete payment by ID
 export const deletePaymentController = async (req: Request, res: Response) => {
     try {
-        const paymentId = parseInt(req.params.id);
+        const paymentId = parseInt(req.params.paymentId);
         if (isNaN(paymentId)) {
             return res.status(400).json({ message: "Invalid payment ID" });
         }

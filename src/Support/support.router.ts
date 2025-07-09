@@ -25,7 +25,7 @@ const support = (app: Express) => {
     );
 
     // Get customer support ticket by ID
-    app.route('/support/:id').get(
+    app.route('/support/:ticketId').get(
         async (req, res, next) => {
             try {
                 await getCustomerSupportByIdController(req, res);
@@ -36,7 +36,7 @@ const support = (app: Express) => {
     );
 
     // Update customer support ticket by ID
-    app.route('/support/:id').put(
+    app.route('/support/:ticketId').put(
         async (req, res, next) => {
             try {
                 await updateCustomerSupportByIdController(req, res);
@@ -47,7 +47,7 @@ const support = (app: Express) => {
     );
 
     // Delete customer support ticket by ID
-    app.route('/support/:id').delete(
+    app.route('/support/:ticketId').delete(
         async (req, res, next) => {
             try {
                 await deleteCustomerSupportController(req, res);

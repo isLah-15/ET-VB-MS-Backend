@@ -39,7 +39,7 @@ export const getAllCustomerSupportController = async (req: Request, res: Respons
 // Get customer support ticket by ID
 export const getCustomerSupportByIdController = async (req: Request, res: Response) => {
     try {
-        const ticketId = parseInt(req.params.id);
+        const ticketId = parseInt(req.params.ticketId);
         if (isNaN(ticketId)) {
             return res.status(400).json({ message: "Invalid ticket ID" });
         }
@@ -58,7 +58,7 @@ export const getCustomerSupportByIdController = async (req: Request, res: Respon
 // Update customer support ticket by ID
 export const updateCustomerSupportByIdController = async (req: Request, res: Response) => {
     try {
-        const ticketId = parseInt(req.params.id);
+        const ticketId = parseInt(req.params.ticketId);
         if (isNaN(ticketId)) {
             return res.status(400).json({ message: "Invalid ticket ID" });
         }
@@ -88,7 +88,7 @@ export const updateCustomerSupportByIdController = async (req: Request, res: Res
 // Delete customer support ticket by ID
 export const deleteCustomerSupportController = async (req: Request, res: Response) => {
     try {
-        const ticketId = parseInt(req.params.id);
+        const ticketId = parseInt(req.params.ticketId);
         if (isNaN(ticketId)) {
             return res.status(400).json({ message: "Invalid ticket ID" });
         }

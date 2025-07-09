@@ -37,7 +37,7 @@ const event = (app: Express) => {
     );
 
     // Get event by ID
-    app.route('/event/:id').get(
+    app.route('/event/:eventId').get(
         async (req, res, next) => {
             try {
                 await getEventByIdController(req, res);
@@ -48,7 +48,7 @@ const event = (app: Express) => {
     );
 
     // Update event by ID
-    app.route('/event/:id').put(
+    app.route('/event/:eventId').put(
         async (req, res, next) => {
             try {
                 await updateEventByIdController(req, res);
@@ -59,7 +59,7 @@ const event = (app: Express) => {
     );
 
     // Delete event by ID
-    app.route('/event/:id').delete(
+    app.route('/event/:eventId').delete(
         async (req, res, next) => {
             try {
                 await deleteEventController(req, res);

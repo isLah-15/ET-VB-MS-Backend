@@ -28,7 +28,7 @@ const booking = (app:Express) => {
     )
 
     // get booking by id
-    app.route('/booking/:id').get(
+    app.route('/booking/:bookingId').get(
         // bothRoleAuth,
         async(req, res, next) => {
             try {
@@ -41,10 +41,8 @@ const booking = (app:Express) => {
     )
 
 
-
-
     // update booking by id
-    app.route('/booking/:id').put(
+    app.route('/booking/:bookingId').put(
         // bothRoleAuth,
         async(req, res, next) => {
             try {
@@ -57,7 +55,7 @@ const booking = (app:Express) => {
     )
 
     // delete booking by id
-    app.route('/booking/:id').delete(
+    app.route('/booking/:bookingId').delete(
         // bothRoleAuth,
         async(req, res, next) => {
             try {
