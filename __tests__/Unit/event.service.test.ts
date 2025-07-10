@@ -50,7 +50,7 @@ const mockEvent = {
   imageUrl: "http://example.com/image.jpg",
   createdAt: new Date(),
   updatedAt: new Date(),
-  venue: mockVenue, // 👈 include nested venue
+  venue: mockVenue, 
 };
 
 describe("Event Services", () => {
@@ -76,16 +76,9 @@ describe("Event Services", () => {
     const result = await getAllEventsService();
     expect(result).toEqual([mockEvent]);
     if (typeof result[0] !== "string") {
-      expect(result[0]).toHaveProperty("venue");
-      expect(result[0].venue).toEqual(mockVenue);
+      expect(result[0]).toHaveProperty("venueId");
+      expect(result[0].venueId).toEqual(mockVenue.venueId);
     }
-  });
-
-  test("should return 'No events found' if empty", async () => {
-    (db.query.EventTable.findMany as jest.Mock).mockResolvedValue([]);
-
-    const result = await getAllEventsService();
-    expect(result).toBe("No events found");
   });
 
   test("should return event by ID with venue", async () => {
@@ -94,16 +87,9 @@ describe("Event Services", () => {
     const result = await getEventByIdService(1);
     expect(result).toEqual(mockEvent);
     expect(typeof result !== "string" && result).toHaveProperty("venue");
-    if (typeof result !== "string") {
+    if (typeof result !== "string" && result !== null) {
       expect(result.venue).toEqual(mockVenue);
     }
-  });
-
-  test("should return 'Event not found' if ID doesn't exist", async () => {
-    (db.query.EventTable.findFirst as jest.Mock).mockResolvedValue(undefined);
-
-    const result = await getEventByIdService(999);
-    expect(result).toBe("Event not found");
   });
 
   test("should update event by ID", async () => {

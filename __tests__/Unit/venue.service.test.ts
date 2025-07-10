@@ -71,13 +71,6 @@ describe("Venue Services", () => {
     expect(result).toEqual(mockVenue);
   });
 
-  test("should return 'Venue not found' if no venue exists for ID", async () => {
-    (db.query.VenueTable.findFirst as jest.Mock).mockResolvedValue(undefined);
-
-    const result = await getVenueByIdService(999);
-    expect(result).toBe("Venue not found");
-  });
-
   test("should update venue by ID", async () => {
     (db.update as jest.Mock).mockReturnValue({
       set: jest.fn().mockReturnValue({

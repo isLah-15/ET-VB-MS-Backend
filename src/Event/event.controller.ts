@@ -25,9 +25,6 @@ export const getAllEventsController = async (req: Request, res: Response) => {
     try {
         const events = await getAllEventsService();
         console.log("Events:", events);
-        if (events.length === 0) {
-            return res.status(404).json({ message: "No events found" });
-        }
         return res.status(200).json({ message: "Events retrieved successfully", events });
     } catch (error: any) {
         console.error("Error fetching events:", error);

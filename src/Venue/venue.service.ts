@@ -23,14 +23,13 @@ export const getAllVenuesService = async () => {
 
 // Get venue by ID
 export const getVenueByIdService = async (venueId: number) => {
-    const venue = await db.query.VenueTable.findFirst({
-        where: eq(VenueTable.venueId, venueId),
-    });
-    if (!venue) {
-        return "Venue not found";
-    }
-    return venue;
+  const venue = await db.query.VenueTable.findFirst({
+    where: eq(VenueTable.venueId, venueId),
+  });
+  return venue;
 };
+
+
 
 // Update venue by ID
 export const updateVenueByIdService = async (venueId: number, venue: TIVenue) => {

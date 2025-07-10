@@ -26,7 +26,7 @@ const event = (app: Express) => {
     );
 
     // Get all events
-    app.route('/event').get(
+    app.route('/events').get(
         async (req, res, next) => {
             try {
                 await getAllEventsController(req, res);

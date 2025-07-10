@@ -14,37 +14,31 @@ export const createEventService = async (event: TIEvent) => {
 
 // Get all events with venue details
 export const getAllEventsService = async () => {
-    const events = await db.query.EventTable.findMany({
-        with: {
-            venue: true,
-        },
-    });
-    if (events.length === 0) {
-        return "No events found";
-    }
-    return events;
+  const events = await db.query.EventTable.findMany();
+  return events; // Don't return a string if empty
 };
 
 // Get event by ID with venue details
 export const getEventByIdService = async (eventId: number) => {
-    const event = await db.query.EventTable.findFirst({
-        where: eq(EventTable.eventId, eventId),
-        with: {
-            venue: true,
-        },
-    });
-    if (!event) {
-        return "Event not found";
-    }
-    return event;
+  const event = await db.query.EventTable.findFirst({
+    where: eq(EventTable.eventId, eventId),
+    with: {
+      venue: true, // Make sure "venue" exists in your schema relations
+    },
+  });
+
+  return event ?? null; // return null if not found
 };
+
 
 // Update event by ID
 export const updateEventByIdService = async (eventId: number, event: TIEvent) => {
-    await db.update(EventTable)
-        .set(event)
-        .where(eq(EventTable.eventId, eventId)).returning();
-    return "Event updated successfully";
+  const updated = await db.update(EventTable)
+    .set(event)
+    .where(eq(EventTable.eventId, eventId))
+    .returning(); // this returns an array of updated rows
+
+  return "Event updated successfully";
 };
 
 // Delete event by ID
