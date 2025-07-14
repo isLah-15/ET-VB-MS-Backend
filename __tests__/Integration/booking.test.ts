@@ -2,86 +2,126 @@ import request from "supertest";
 import app from "../../src/index";
 import db from "../../src/Drizzle/db";
 
-let ticketId: number;
+
+
+let bookingId: number;
 let userId: number;
+let venueId: number;
+let eventId: number;
 
 const testUser = {
-  email: "matirita80@gmail.com",
+  email: "collinsturi@gmail.com",
   password: "Mkuu00$",
 };
 
-const testTicket = {
-  subject: "Login Issue",
-  description: "I can't log into my account.",
-  status: "open",
+const testVenue = {
+  venueName: "Mombasa Convention Center",
+  address: 202,
+  capacity: 1500,
 };
 
-describe("Customer Support Integration Tests", () => {
+const testEvent = {
+  eventName: "Startup Connect Kenya",
+  category: "Tech",
+  eventDate: "2025-09-01",
+  startTime: "10:00",
+  endTime: "17:00",
+  description: "Tech innovators and startups networking summit.",
+  ticketPrice: 2500,
+  ticketsTotal: 500,
+  ticketsAvailable: 400,
+  ticketsSold: 100,
+  imageUrl: "https://example.com/images/event2.jpg",
+  isActive: true,
+};
+
+const testBooking = {
+  quantity: 2,
+  totalAmount: 5000, 
+  bookingStatus: "confirmed",
+};
+
+
+describe("Booking Integration Tests", () => {
   beforeAll(async () => {
     const userRes = await request(app).post("/auth/login").send(testUser);
     console.log("User Response:", userRes.body);
+    console.log(userRes.body.user)
+        console.log(userRes.body.user.user_id)
 
-    userId = userRes.body.user?.user_id || userRes.body.userId;
+    
+    userId = userRes.body.user.user_id;
+
     console.log("User ID:", userId);
+    const venueRes = await request(app).post("/venue").send(testVenue);
+    console.log("Venue Response:", venueRes.body);
+    
+    
+    venueId = venueRes.body.newVenue[0].venueId;
+
+    console.log("Venue ID:", venueId);
+
+    const eventRes = await request(app)
+      .post("/event")
+      .send({ ...testEvent, venueId });
+          console.log("rrrrrrrr", eventRes.body)
+
+                    console.log("ggggggggg", eventRes.body.newEvent)
+                              console.log("dddddddd", eventRes.body.newEvent[0].eventId)
+
+
+    eventId = eventRes.body.newEvent[0].eventId;
+
   });
 
-  it("should create a new customer support ticket", async () => {
+   it("should create a new booking", async () => {
+        console.log("Booking Response:", testBooking, userId, eventId);
+    
     const res = await request(app)
-      .post("/support")
-      .send({ ...testTicket, userId });
+      .post("/booking")
+      .send({ ...testBooking, userId, eventId });
 
-    console.log("Create Ticket Response:", res.body);
+    console.log("Sending Booking:", { ...testBooking, userId, eventId });
+    console.log("Booking Response:", res.body);
+
     expect(res.status).toBe(201);
-    expect(res.body.message).toBe("Customer support ticket created successfully");
-    expect(res.body.newTicket).toHaveProperty("ticketId");
+    expect(res.body.message).toBe("Booking created successfully");
+    expect(res.body.newBooking).toHaveProperty("bookingId");
 
-    ticketId = res.body.newTicket.ticketId;
+    bookingId = res.body.newBooking.bookingId;
   });
 
-  it("should fetch all customer support tickets", async () => {
-    const res = await request(app).get("/support");
+  it("should fetch all bookings", async () => {
+    const res = await request(app).get("/bookings");
     expect(res.status).toBe(200);
-    expect(res.body.message).toBe("Customer support tickets retrieved successfully");
-    expect(Array.isArray(res.body.tickets)).toBe(true);
+    expect(res.body.bookings).toBeInstanceOf(Array);
   });
 
-  it("should fetch customer support ticket by ID", async () => {
-    const res = await request(app).get(`/support/${ticketId}`);
+  it("should get booking by ID", async () => {
+    const res = await request(app).get(`/booking/${bookingId}`);
     expect(res.status).toBe(200);
-    expect(res.body.message).toBe("Customer support ticket retrieved successfully");
-    expect(res.body.ticket).toHaveProperty("ticketId", ticketId);
+    expect(res.body.booking).toHaveProperty("bookingId", bookingId);
   });
 
-  it("should update the customer support ticket", async () => {
-    const updatedTicket = {
-      subject: "Updated Login Issue",
-      description: "Issue persists after trying password reset.",
-      status: "in_progress",
-    };
-
-    const res = await request(app)
-      .put(`/support/${ticketId}`)
-      .send(updatedTicket);
+  it("should update the booking", async () => {
+    const updatedBooking = { bookingStatus: "cancelled" };
+    const res = await request(app).put(`/booking/${bookingId}`).send(updatedBooking);
 
     expect(res.status).toBe(200);
-    expect(res.body.message).toBe("Customer support ticket updated successfully");
-    expect(res.body.updatedTicket.status).toBe("in_progress");
+    expect(res.body.message).toBe("Booking updated successfully");
   });
 
-  it("should delete the customer support ticket", async () => {
-    const res = await request(app).delete(`/support/${ticketId}`);
+  it("should delete the booking", async () => {
+    const res = await request(app).delete(`/booking/${bookingId}`);
     expect(res.status).toBe(200);
-    expect(res.body.message).toBe("Customer support ticket deleted successfully");
+    expect(res.body.message).toBe("Booking deleted successfully");
   });
 
-  it("should return 404 for deleted ticket", async () => {
-    const res = await request(app).get(`/support/${ticketId}`);
-    expect(res.status).toBe(404);
-    expect(res.body.message).toBe("Customer support ticket not found");
-  });
+  
 
-  // Optionally clean up test user
-  // afterAll(async () => {
-  //   await db.delete(UserTable).where(eq(UserTable.userId, userId));
-  // });
+//   afterAll(async () => {
+//     await request(app).delete(`/event/${eventId}`);
+//     await request(app).delete(`/venue/${venueId}`);
+//     await db.delete(UserTable).where(eq(UserTable.userId, userId));
+//   });
 });

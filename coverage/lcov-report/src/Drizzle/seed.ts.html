@@ -1,0 +1,649 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for src/Drizzle/seed.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/Drizzle</a> seed.ts</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>0/14</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/2</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>0/14</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line low'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import db from "./db";</span>
+<span class="cstat-no" title="statement not covered" >import { BookingTable, CustomerSupportTable, EventTable, PaymentTable, UserTable, VenueTable } from "./schema"</span>
+&nbsp;
+async function <span class="fstat-no" title="function not covered" >seed(</span>) {
+<span class="cstat-no" title="statement not covered" >    console.log("Seeding to database started...")</span>
+&nbsp;
+    // Seed Users
+<span class="cstat-no" title="statement not covered" >await db.insert(UserTable).values([</span>
+  {
+    firstName: "Alice",
+    lastName: "Wambui",
+    email: "alice@example.com",
+    password: "1234567",
+    contactPhone: 701234567,
+    address: "Nairobi",
+    role: "user",
+    isVerified: true
+  },
+  {
+    firstName: "Brian",
+    lastName: "Otieno",
+    email: "brian@example.com",
+    password: "1234567",
+    contactPhone: 712345678,
+    address: "Kisumu",
+    role: "admin",
+    isVerified: false
+  },
+  {
+    firstName: "Cynthia",
+    lastName: "Mutua",
+    email: "cynthia@example.com",
+    password: "1234567",
+    contactPhone: 723456789,
+    address: "Mombasa",
+    role: "user",
+    isVerified: true
+  },
+  {
+    firstName: "David",
+    lastName: "Mwangi",
+    email: "david@example.com",
+    password: "1234567",
+    contactPhone: 734567890,
+    address: "Nakuru",
+    role: "user",
+    isVerified: false
+  },
+  {
+    firstName: "Esther",
+    lastName: "Kariuki",
+    email: "esther@example.com",
+    password: "1234567",
+    contactPhone: 745678901,
+    address: "Eldoret",
+    role: "admin",
+    isVerified: true
+  },
+  {
+    firstName: "Felix",
+    lastName: "Njenga",
+    email: "felix@example.com",
+    password: "1234567",
+    contactPhone: 756789012,
+    address: "Thika",
+    role: "user",
+    isVerified: true
+  },
+  {
+    firstName: "Grace",
+    lastName: "Njeri",
+    email: "grace@example.com",
+    password: "1234567",
+    contactPhone: 767890123,
+    address: "Machakos",
+    role: "user",
+    isVerified: false
+  },
+  {
+    firstName: "Henry",
+    lastName: "Ochieng",
+    email: "henry@example.com",
+    password: "1234567",
+    contactPhone: 778901234,
+    address: "Nyeri",
+    role: "user",
+    isVerified: true
+  },
+  {
+    firstName: "Irene",
+    lastName: "Chebet",
+    email: "irene@example.com",
+    password: "1234567",
+    contactPhone: 789012345,
+    address: "Kericho",
+    role: "admin",
+    isVerified: true
+  },
+  {
+    firstName: "James",
+    lastName: "Barasa",
+    email: "james@example.com",
+    password: "1234567",
+    contactPhone: 790123456,
+    address: "Kakamega",
+    role: "user",
+    isVerified: false
+  }
+]);
+&nbsp;
+// Seed Venues
+<span class="cstat-no" title="statement not covered" >await db.insert(VenueTable).values([</span>
+  { venueName: "KICC Grand Hall", address: 101, capacity: 3000 },
+  { venueName: "Mombasa Convention Center", address: 202, capacity: 1500 },
+  { venueName: "Kisumu Lakeside Arena", address: 303, capacity: 2000 },
+  { venueName: "Nakuru Showgrounds", address: 404, capacity: 2500 },
+  { venueName: "Eldoret Sports Club", address: 505, capacity: 1800 },
+  { venueName: "Machakos People's Park", address: 606, capacity: 2200 },
+  { venueName: "Nyayo National Stadium", address: 707, capacity: 3500 },
+  { venueName: "Sarova Whitesands Ballroom", address: 808, capacity: 1200 },
+  { venueName: "Thika Community Hall", address: 909, capacity: 900 },
+  { venueName: "Westlands Open Grounds", address: 1001, capacity: 2700 },
+]);
+&nbsp;
+// Seed Events
+<span class="cstat-no" title="statement not covered" >await db.insert(EventTable).values([</span>
+  {eventName: "Urban Culture Fest", venueId: 1, category: "Music", eventDate: "2025-08-15", startTime: "16:00", endTime: "22:00", description: "Experience Nairobi's vibrant music and dance culture.", ticketPrice: 1500, ticketsTotal: 1000, ticketsAvailable: 700, imageUrl: "https://example.com/images/event1.jpg", ticketsSold: 300, isActive: true},
+  {eventName: "Startup Connect Kenya", venueId: 2, category: "Tech", eventDate: "2025-09-01", startTime: "10:00", endTime: "17:00", description: "Tech innovators and startups networking summit.", ticketPrice: 2500, ticketsTotal: 500, ticketsAvailable: 400, imageUrl: "https://example.com/images/event2.jpg", ticketsSold: 100, isActive: true},  
+  {eventName: "Coastal Film Week", venueId: 3, category: "Film", eventDate: "2025-08-20", startTime: "12:00", endTime: "20:00", description: "Showcasing the best of Kenyan coastal cinema.", ticketPrice: 1000, ticketsTotal: 300, ticketsAvailable: 150, imageUrl: "https://example.com/images/event3.jpg", ticketsSold: 150, isActive: true},
+  {eventName: "Nakuru Food Carnival", venueId: 4, category: "Food", eventDate: "2025-08-28", startTime: "11:00", endTime: "18:00", description: "Taste your way through Kenya's best dishes and treats.", ticketPrice: 800, ticketsTotal: 1200, ticketsAvailable: 1100, imageUrl: "https://example.com/images/event4.jpg", ticketsSold: 100, isActive: true},
+  {eventName: "Eldoret Marathon Meet", venueId: 5, category: "Sports", eventDate: "2025-09-10", startTime: "06:00", endTime: "12:00", description: "Annual elite marathon with local and international athletes.", ticketPrice: 500, ticketsTotal: 2000, ticketsAvailable: 1800, imageUrl: "https://example.com/images/event5.jpg", ticketsSold: 200, isActive: true},
+  {eventName: "Machakos Arts &amp; Crafts", venueId: 6, category: "Art", eventDate: "2025-10-05", startTime: "09:00", endTime: "16:00", description: "Handmade art and crafts fair with live demos.", ticketPrice: 1200, ticketsTotal: 600, ticketsAvailable: 500, imageUrl: "https://example.com/images/event6.jpg", ticketsSold: 100, isActive: true},
+  {eventName: "Nyayo Gospel Concert", venueId: 7, category: "Music", eventDate: "2025-08-22", startTime: "14:00", endTime: "20:00", description: "Top gospel artists from across Africa perform live.", ticketPrice: 1300, ticketsTotal: 1500, ticketsAvailable: 900, imageUrl: "https://example.com/images/event7.jpg", ticketsSold: 600, isActive: true},
+  {eventName: "Coast Business Expo", venueId: 8, category: "Business", eventDate: "2025-09-30", startTime: "08:30", endTime: "17:00", description: "Empowering SMEs through exhibits and panels.", ticketPrice: 1800, ticketsTotal: 800, ticketsAvailable: 550, imageUrl: "https://example.com/images/event8.jpg", ticketsSold: 250, isActive: true},
+  {eventName: "Thika Laughs Night", venueId: 9, category: "Comedy", eventDate: "2025-08-18", startTime: "19:00", endTime: "22:00", description: "An unforgettable evening of comedy with top acts.", ticketPrice: 900, ticketsTotal: 400, ticketsAvailable: 300, imageUrl: "https://example.com/images/event9.jpg", ticketsSold: 100, isActive: true},
+  {eventName: "Green Futures Conference", venueId: 10, category: "Environment", eventDate: "2025-11-12", startTime: "09:00", endTime: "15:00", description: "Sustainability experts share insights for a greener future.", ticketPrice: 1000, ticketsTotal: 1000, ticketsAvailable: 750, imageUrl: "https://example.com/images/event10.jpg", ticketsSold: 250, isActive: true}
+  ])
+&nbsp;
+&nbsp;
+    // Seed Bookings
+<span class="cstat-no" title="statement not covered" >await db.insert(BookingTable).values([</span>
+  { userId: 1, eventId: 1, quantity: 2, totalAmount: 4000, bookingStatus: "confirmed" },
+  { userId: 2, eventId: 2, quantity: 1, totalAmount: 2000, bookingStatus: "pending" },
+  { userId: 3, eventId: 3, quantity: 3, totalAmount: 6000, bookingStatus: "cancelled" },
+  { userId: 4, eventId: 4, quantity: 2, totalAmount: 4000, bookingStatus: "confirmed" },
+  { userId: 5, eventId: 5, quantity: 1, totalAmount: 2000, bookingStatus: "pending" },
+  { userId: 6, eventId: 6, quantity: 4, totalAmount: 8000, bookingStatus: "confirmed" },
+  { userId: 7, eventId: 7, quantity: 2, totalAmount: 4000, bookingStatus: "cancelled" },
+  { userId: 8, eventId: 8, quantity: 1, totalAmount: 2000, bookingStatus: "confirmed" },
+  { userId: 9, eventId: 9, quantity: 3, totalAmount: 6000, bookingStatus: "pending" },
+  { userId: 10, eventId: 10, quantity: 2, totalAmount: 4000, bookingStatus: "confirmed" },
+]);
+&nbsp;
+// Seed Payments
+<span class="cstat-no" title="statement not covered" >await db.insert(PaymentTable).values([</span>
+  { bookingId: 1, userId: 1, transactionId: 10001, amount: 4000, paymentStatus: "completed", paymentMethod: "m_pesa" },
+  { bookingId: 2, userId: 3, transactionId: 10002, amount: 2000, paymentStatus: "pending", paymentMethod: "credit_card" },
+  { bookingId: 3, userId: 2, transactionId: 10003, amount: 6000, paymentStatus: "failed", paymentMethod: "paypal" },
+  { bookingId: 4, userId: 4, transactionId: 10004, amount: 4000, paymentStatus: "completed", paymentMethod: "m_pesa" },
+  { bookingId: 5, userId: 5, transactionId: 10005, amount: 2000, paymentStatus: "pending", paymentMethod: "credit_card" },
+  { bookingId: 6, userId: 6, transactionId: 10006, amount: 8000, paymentStatus: "completed", paymentMethod: "paypal" },
+  { bookingId: 7, userId: 7, transactionId: 10007, amount: 4000, paymentStatus: "failed", paymentMethod: "credit_card" },
+  { bookingId: 8, userId: 8, transactionId: 10008, amount: 2000, paymentStatus: "completed", paymentMethod: "m_pesa" },
+  { bookingId: 9, userId: 9, transactionId: 10009, amount: 6000, paymentStatus: "pending", paymentMethod: "paypal" },
+  { bookingId: 10, userId: 10, transactionId: 10010, amount: 4000, paymentStatus: "completed", paymentMethod: "m_pesa" },
+]);
+&nbsp;
+// Seed Customer Support Tickets
+<span class="cstat-no" title="statement not covered" >await db.insert(CustomerSupportTable).values([</span>
+  { userId: 1, subject: "Login Issue", description: "I can't log into my account.", status: "open" },
+  { userId: 2, subject: "Payment Failed", description: "My payment didn't go through but money was deducted.", status: "in_progress" },
+  { userId: 3, subject: "Event Cancelled", description: "I booked an event but it was cancelled. How do I get a refund?", status: "resolved" },
+  { userId: 4, subject: "Profile Update Error", description: "Unable to update my contact phone number.", status: "open" },
+  { userId: 5, subject: "Wrong Booking", description: "I booked the wrong event. Can I change it?", status: "resolved" },
+  { userId: 6, subject: "App Crash", description: "The app crashes when I try to view my tickets.", status: "in_progress" },
+  { userId: 7, subject: "Verification Issue", description: "My email is not verifying even after clicking the link.", status: "open" },
+  { userId: 3, subject: "Refund Not Received", description: "I was told a refund was processed but I haven’t received it.", status: "in_progress" },
+  { userId: 1, subject: "Ticket Not Downloading", description: "I'm unable to download my ticket after payment.", status: "resolved" },
+  { userId: 2, subject: "Account Deletion", description: "I want to delete my account permanently.", status: "open" },
+]);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  console.log("Seeding to database completed successfully.");</span>
+<span class="cstat-no" title="statement not covered" >    process.exit(0); </span>// 0 means success
+}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >seed().catch(<span class="fstat-no" title="function not covered" >(e</span>rror) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    console.error("Seeding failed:", error);</span>
+<span class="cstat-no" title="statement not covered" >    process.exit(1); </span>// 1 means an error occurred
+})</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-07-14T11:35:51.527Z
+            </div>
+        <script src="../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
+    </body>
+</html>
+    
