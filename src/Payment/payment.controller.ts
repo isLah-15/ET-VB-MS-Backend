@@ -24,19 +24,17 @@ export const createPaymentController = async (req: Request, res: Response) => {
 
 // Get all payments
 export const getAllPaymentsController = async (req: Request, res: Response) => {
-    try {
-        const payments = await getAllPaymentsService();
-        console.log(payments);
+  try {
+    const payments = await getAllPaymentsService();
+    console.log(payments);
 
-        if (payments.length === 0) {
-            return res.status(404).json({ message: "No payments found" });
-        }
-        return res.status(200).json({ message: "Payments retrieved successfully", payments });
-    } catch (error: any) {
-        console.error("GET ALL PAYMENTS ERROR:", error);
-        return res.status(500).json({ message: "Internal server error", error: error.message });
-    }
+    return res.status(200).json({ message: "Payments retrieved successfully", payments }); // Always return 200
+  } catch (error: any) {
+    console.error("GET ALL PAYMENTS ERROR:", error);
+    return res.status(500).json({ message: "Internal server error", error: error.message });
+  }
 };
+
 
 // Get payment by ID
 export const getPaymentByIdController = async (req: Request, res: Response) => {

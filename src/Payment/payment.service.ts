@@ -12,22 +12,22 @@ export const createPaymentService = async (payment: TIPayment) => {
         return null;
 };
 
-//get all payments with user and event details
+// Get all payments with user and booking details
 export const getAllPaymentsService = async () => {
-    const payments = await db.query.PaymentTable.findMany({
-        with: {
-            user: true,
-            booking: true
-        }
-    });
+  const payments = await db.query.PaymentTable.findMany({
+    with: {
+      user: true,
+      booking: true,
+    },
+  });
 
-    if (payments.length === 0) {
-        return "No payments found";
-    }
+  if (payments.length === 0) {
+    return "No payments found";
+  }
 
-
-    return payments;
+  return payments;
 };
+
 
 //get payment by id with user and event details
 export const getPaymentByIdService = async (paymentId: number) => {
@@ -39,20 +39,20 @@ export const getPaymentByIdService = async (paymentId: number) => {
         }
     });
 
-    if (!payment) {
-        return "Payment not found";
-    }
-
-    return payment;
+    return payment ?? null;
 };
 
-//update payment by Id service
+// update payment by Id service
 export const updatePaymentByIdService = async (paymentId: number, payment: TIPayment) => {
-    await db.update(PaymentTable)
-        .set(payment)
-        .where(eq(PaymentTable.paymentId, paymentId)).returning();
-    return "Payment updated successfully";
+  const updated = await db
+    .update(PaymentTable)
+    .set({ ...payment, updatedAt: new Date().toISOString() }) // ensure correct type
+    .where(eq(PaymentTable.paymentId, paymentId))
+    .returning();
+
+  return updated[0]; // return the updated record
 };
+
 
 //delete payment service
 export const deletePaymentService = async (paymentId: number) => {

@@ -33,20 +33,20 @@ export const getCustomerSupportByIdService = async (ticketId: number) => {
             user: true
         }
     });
-
-    if (!ticket) {
-        return "Customer support ticket not found";
-    }
-    return ticket;
+    return ticket ?? null;
 };
 
-//update customer support ticket by Id service
+//update customer support by Id service
 export const updateCustomerSupportByIdService = async (ticketId: number, ticket: TICustomerSupport) => {
-    await db.update(CustomerSupportTable)
-        .set(ticket)
-        .where(eq(CustomerSupportTable.ticketId, ticketId)).returning();
-    return "Customer support ticket updated successfully";
-}
+  const updated = await db.update(CustomerSupportTable)
+    .set({ ...ticket, updatedAt: new Date().toISOString() }) // Ensure timestamp is valid
+    .where(eq(CustomerSupportTable.ticketId, ticketId))
+    .returning();
+
+  return updated[0]; 
+};
+
+
 
 //delete customer support ticket service by Id
 export const deleteCustomerSupportService = async (ticketId: number) => {

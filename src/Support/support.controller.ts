@@ -57,32 +57,32 @@ export const getCustomerSupportByIdController = async (req: Request, res: Respon
 
 // Update customer support ticket by ID
 export const updateCustomerSupportByIdController = async (req: Request, res: Response) => {
-    try {
-        const ticketId = parseInt(req.params.ticketId);
-        if (isNaN(ticketId)) {
-            return res.status(400).json({ message: "Invalid ticket ID" });
-        }
-
-        const ticket = req.body;
-        console.log("Ticket to update:", ticket);
-        
-        //check if ticket exists
-        const existingTicket = await getCustomerSupportByIdService(ticketId);
-        if (!existingTicket) {
-            return res.status(404).json({ message: "Customer support ticket not found" });
-        }
-
-        //update the ticket
-        const updatedTicket = await updateCustomerSupportByIdService(ticketId, ticket);
-        if (updatedTicket) {
-            return res.status(200).json({ message: "Customer support ticket updated successfully", updatedTicket });
-        } else {
-            return res.status(400).json({ message: "Failed to update customer support ticket" });
-        }
-    } catch (error: any) {
-        console.error("UPDATE CUSTOMER SUPPORT TICKET BY ID ERROR:", error);
-        return res.status(500).json({ message: "Internal server error", error: error.message });
+  try {
+    const ticketId = parseInt(req.params.ticketId);
+    if (isNaN(ticketId)) {
+      return res.status(400).json({ message: "Invalid ticket ID" });
     }
+
+    const ticket = req.body;
+    console.log("Ticket to update:", ticket);
+
+    //Check if the ticket exists
+    const existingTicket = await getCustomerSupportByIdService(ticketId);
+    if (!existingTicket) {
+      return res.status(404).json({ message: "Ticket not found" });
+    }
+
+    // Update the ticket
+    const updatedTicket = await updateCustomerSupportByIdService(ticketId, ticket);
+    if (updatedTicket) {
+      return res.status(200).json({ message: "Customer support ticket updated successfully", updatedTicket });
+    } else {
+      return res.status(400).json({ message: "Failed to update ticket" });
+    }
+  } catch (error: any) {
+    console.error(error)
+    return res.status(500).json({ message: "Internal server error", error: error.message });
+  }
 };
 
 // Delete customer support ticket by ID

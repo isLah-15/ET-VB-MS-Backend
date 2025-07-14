@@ -6,21 +6,28 @@ import { createBookingService, deleteBookingbyIdService, getAllBookingService, g
 export const createBookingController = async (req: Request, res: Response) => {
   try {
     const booking = req.body;
-    console.log(booking)
+    console.log("Received Booking:", booking);
 
     const newBooking = await createBookingService(booking);
 
-    console.log(newBooking)
-    if (newBooking) {
-      return res.status(201).json({ message: "Booking created successfully", newBooking });
+    console.log("Inserted Booking:", newBooking);
+    if (newBooking && newBooking.length > 0) {
+      return res.status(201).json({
+        message: "Booking created successfully",
+        newBooking: newBooking[0], // Return only the first object
+      });
     } else {
       return res.status(400).json({ message: "Failed to create booking" });
     }
   } catch (error: any) {
     console.error("CREATE BOOKING ERROR:", error);
-    return res.status(500).json({ message: "Internal server error", error: error.message });
+    return res.status(500).json({
+      message: "Internal server error",
+      error: error.message,
+    });
   }
 };
+
 
 // Get all bookings
 export const getAllBookingsController = async ( req: Request, res: Response) => {

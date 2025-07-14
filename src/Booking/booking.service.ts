@@ -25,22 +25,18 @@ export const getAllBookingService = async () => {
     return bookings;
 };
 
-//get booking by id service with user and event details
 export const getBookingByIdService = async (bookingId: number) => {
-    const booking = await db.query.BookingTable.findFirst({
-        where: eq(BookingTable.bookingId, bookingId),
-        with: {
-            user: true,
-            event: true
-        }
-    });
+  const booking = await db.query.BookingTable.findFirst({
+    where: eq(BookingTable.bookingId, bookingId),
+    with: {
+      user: true,
+      event: true,
+    },
+  });
 
-    if (!booking) {
-        return "Booking not found";
-    }
-
-    return booking;
+  return booking ?? null; // Return null if not found
 };
+
 
 //update booking by Id service
 export const updateBookingByIdService = async (bookingId: number, booking: TIBooking) => {

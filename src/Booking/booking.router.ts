@@ -15,7 +15,7 @@ const booking = (app:Express) => {
 
 
     // get all bookings
-    app.route('/booking').get(
+    app.route('/bookings').get(
         // adminRoleAuth,
         async (req, res, next) => {
             try {
