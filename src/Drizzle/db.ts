@@ -17,6 +17,6 @@ main().then(() =>{
     console.log("Error connecting to the database:", error)
 })
 
-const db = drizzle(client, { schema, logger: false})
+const db = drizzle(client, { schema, logger: true})
 
 export default db
