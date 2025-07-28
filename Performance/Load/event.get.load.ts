@@ -11,7 +11,7 @@ export const options = {
     ],
     ext: {
         loadimpact: {
-            name: 'Todos GET Load Test',
+            name: 'Event GET Load Test',
         },
     },
 };
@@ -19,7 +19,7 @@ export const options = {
 export default function () {
     // If authentication is required, add a valid token here
     // const token = 'YOUR_VALID_TOKEN';
-    const res = http.get(`${BASE_URL}/events`, {
+    const res = http.get(`${BASE_URL}/event`, {
         headers: {
             'Content-Type': 'application/json',
             // 'Authorization': `Bearer ${token}`,

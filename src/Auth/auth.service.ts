@@ -1,5 +1,5 @@
 
-import { sql } from "drizzle-orm";
+import { sql } from "drizzle-orm/sql";
 import db from "../Drizzle/db";
 import { TIUser, UserTable } from "../Drizzle/schema";
 
@@ -52,6 +52,7 @@ export const getAllUsersService = async () => {
             email: true,
             password: true,
             role: true,
+            isVerified: true
             
         }
     });

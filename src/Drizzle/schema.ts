@@ -1,9 +1,9 @@
-import { relations } from 'drizzle-orm';
 import { integer } from 'drizzle-orm/pg-core';
 import { time } from 'drizzle-orm/pg-core';
 import { date } from 'drizzle-orm/pg-core';
 import { varchar } from 'drizzle-orm/pg-core';
 import { pgTable, serial, text, timestamp, boolean } from 'drizzle-orm/pg-core';
+import { relations } from 'drizzle-orm/relations';
 
 // User Table
 export const UserTable = pgTable('users', {

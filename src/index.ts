@@ -14,7 +14,7 @@ const initilizeApp = () => {
     app.use(express.json()); //used to parse JSON bodies
 
     app.use(cors({
-    origin:'http://localhost:8081',
+    origin:'http://localhost:5173',
     credentials: true
     }));
 
