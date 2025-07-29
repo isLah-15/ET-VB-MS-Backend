@@ -1,5 +1,5 @@
 import { Express } from "express";
-import { createBookingController, deleteBookingbyIdController, getAllBookingsByIdController, getAllBookingsController, updateBookingbyIdController } from "./booking.controller";
+import { createBookingController, deleteBookingbyIdController, getAllBookingsByIdController, getAllBookingsController, getBookingByUserIdController, updateBookingbyIdController } from "./booking.controller";
 
 const booking = (app:Express) => {
     app.route('/booking').post(
@@ -40,6 +40,17 @@ const booking = (app:Express) => {
         }
     )
 
+    // get booking by user id
+    app.route('/booking/user/:userId').get(
+        async(req, res, next) => {
+            try {
+                await getBookingByUserIdController(req, res)
+            } catch (error) {
+                next(error)
+
+            }
+        }
+    )
 
     // update booking by id
     app.route('/booking/:bookingId').put(

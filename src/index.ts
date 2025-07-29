@@ -6,6 +6,7 @@ import payment from './Payment/payment.router';
 import support from './Support/support.router';
 import booking from './Booking/booking.router';
 import cors from 'cors';
+import analytics from './Analytics/analytics.router';
 
 
 const initilizeApp = () => {
@@ -25,6 +26,7 @@ const initilizeApp = () => {
     payment(app);
     support(app);
     booking(app);
+    analytics(app);
 
 
     app.get('/', (req, res) => {

@@ -10,6 +10,8 @@ import jwt from "jsonwebtoken"
 // create a user controller
 export const createUserController = async (req: Request, res: Response) => {
     try {
+
+        console.log(req.body)
         const user = req.body;
         const password = user.password;
         const hashedPassword = await bcrypt.hashSync(password, 10);

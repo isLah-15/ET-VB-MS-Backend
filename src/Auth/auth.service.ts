@@ -5,6 +5,8 @@ import { TIUser, UserTable } from "../Drizzle/schema";
 
 // create a new user
 export const createUserService = async (user: TIUser) => {
+
+    console.log(user)
     await db.insert(UserTable).values(user);
     return "User created successfully";
 }

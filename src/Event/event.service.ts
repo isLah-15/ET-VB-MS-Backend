@@ -30,7 +30,6 @@ export const getEventByIdService = async (eventId: number) => {
   return event ?? null; // return null if not found
 };
 
-
 // Update event by ID
 export const updateEventByIdService = async (eventId: number, event: TIEvent) => {
   const updated = await db.update(EventTable)

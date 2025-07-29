@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createBookingService, deleteBookingbyIdService, getAllBookingService, getBookingByIdService, updateBookingByIdService,  } from "./booking.service";
+import { createBookingService, deleteBookingbyIdService, getAllBookingService, getBookingByIdService, getBookingByUserIdService, updateBookingByIdService,  } from "./booking.service";
 
 
 // Create a new booking
@@ -64,6 +64,25 @@ export const getAllBookingsByIdController = async (req: Request, res: Response) 
     return res.status(500).json({ error: error.message });
   }
 };
+
+// Get booking by user ID
+export const getBookingByUserIdController = async (req: Request, res: Response) => {
+    try {
+      const userId = parseInt(req.params.userId);
+      if (isNaN(userId)) {
+        return res.status(400).json({ message: "Invalid user ID" });
+      }
+  
+      const bookings = await getBookingByUserIdService(userId);
+      if (!bookings || bookings.length === 0) {
+        return res.status(404).json({ message: "No bookings found for this user" });
+      }
+  
+      return res.status(200).json({ bookings });
+    } catch (error: any) {
+      return res.status(500).json({ error: error.message });
+    }
+  }
 
 // Update booking by ID
 export const updateBookingbyIdController = async (req: Request, res: Response) => {

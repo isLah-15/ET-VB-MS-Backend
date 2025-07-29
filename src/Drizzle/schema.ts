@@ -15,7 +15,7 @@ export const UserTable = pgTable('users', {
     contactPhone: integer('contact_phone').notNull(),
     address: varchar('address', { length: 255 }).notNull(),
     verificationCode: varchar("verification_code"),
-    role: text('role', { enum: ['admin', 'user'] }).notNull(),
+    role: text('role', { enum: ['admin', 'user'] }).default('user').notNull(),
     createdAt: date('created_at').defaultNow().notNull(),
     updatedAt: date('updated_at').defaultNow().notNull(),
     isVerified: boolean('is_verified').default(false).notNull(),

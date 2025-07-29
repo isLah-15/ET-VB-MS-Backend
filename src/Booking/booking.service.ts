@@ -37,6 +37,18 @@ export const getBookingByIdService = async (bookingId: number) => {
   return booking ?? null; // Return null if not found
 };
 
+//get booking by userId service
+export const getBookingByUserIdService = async (userId: number) => {
+  const bookings = await db.query.BookingTable.findMany({
+    where: eq(BookingTable.userId, userId),
+    with: {
+      user: true,
+      event: true,
+    },
+  });
+
+  return bookings.length > 0 ? bookings : null;
+};
 
 //update booking by Id service
 export const updateBookingByIdService = async (bookingId: number, booking: TIBooking) => {
