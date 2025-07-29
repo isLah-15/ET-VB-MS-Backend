@@ -25,7 +25,7 @@ const analytics = (app: Express) => {
     }
   );
 
-  // ✅ Get top 5 most booked events
+  //  Get top 5 most booked events
   app.route('/analytics/events/top').get(
     async (req, res, next) => {
       try {

@@ -84,6 +84,38 @@ export const getBookingByUserIdController = async (req: Request, res: Response) 
     }
   }
 
+//Confirm booking by ID
+export const confirmBookingByIdController = async (req: Request, res: Response) =>
+  {
+  try {
+    const bookingId = parseInt(req.params.bookingId);
+    if (isNaN(bookingId)) {
+      return res.status(400).json({ message: "Invalid booking ID" });
+    }
+
+    const booking = await getBookingByIdService(bookingId);
+    if (!booking) {
+      return res.status(404).json({ message: "Booking not found" });
+    }
+
+    // Assuming you have a service to confirm the booking
+    const confirmedBooking = await updateBookingByIdService(bookingId, {
+    updatedBooking: {
+    ...booking,
+    bookingStatus: 'confirmed'
+    }
+    });
+    if (confirmedBooking) {
+      return res.status(200).json({ message: "Booking confirmed successfully", confirmedBooking });
+    } else {
+      return res.status(400).json({ message: "Failed to confirm booking" });
+    }
+  } catch (error: any) {
+    console.error("CONFIRM BOOKING ERROR:", error);
+    return res.status(500).json({ message: "Internal server error", error: error.message });
+  }
+}
+
 // Update booking by ID
 export const updateBookingbyIdController = async (req: Request, res: Response) => {
   try {

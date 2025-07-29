@@ -50,13 +50,26 @@ export const getBookingByUserIdService = async (userId: number) => {
   return bookings.length > 0 ? bookings : null;
 };
 
-//update booking by Id service
-export const updateBookingByIdService = async (bookingId: number, booking: TIBooking) => {
-    await db.update(BookingTable)
-        .set(booking)
-        .where(eq(BookingTable.bookingId, bookingId)).returning();
-    return "Booking updated successfully";
+export const updateBookingByIdService = async (
+  bookingId: number,
+  booking: { updatedBooking: TIBooking } // or adjust type accordingly
+) => {
+  console.log("Updating booking with ID:", bookingId, "and data:", booking);
+
+  const { bookingId: _, ...updateData } = booking.updatedBooking;
+
+  if (Object.keys(updateData).length === 0) {
+    throw new Error("No fields provided to update.");
+  }
+
+  await db.update(BookingTable)
+    .set(updateData)
+    .where(eq(BookingTable.bookingId, bookingId))
+    .returning();
+
+  return "Booking updated successfully";
 };
+
 
 //delete booking service by Id
 export const deleteBookingbyIdService = async (bookingId: number) => {

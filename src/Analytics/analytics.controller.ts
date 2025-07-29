@@ -7,7 +7,7 @@ import {
   getTotalUsers,
   getBookingStatusStats,
   getPaymentMethodStats
-} from "./Analytics.service";
+} from "./analytics.service";
 
 export const analyticsController = {
   totalRevenue: async (_: Request, res: Response) => {
